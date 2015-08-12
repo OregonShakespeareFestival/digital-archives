@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # Non Sufia generated routes
   mount ProductionCredits::Engine, at: "/production_credits"
 
+  match 'search_results' => 'search_results#index', via: [:get, :post]
+
   # Sufia generated routes
   blacklight_for :catalog
   devise_for :users

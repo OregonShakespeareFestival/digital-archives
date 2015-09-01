@@ -1,0 +1,74 @@
+<div class="search-filters">
+  <div class="row">
+    <div class="section-container">
+      <div class="col-1-2">
+        <div class="search-filter filter-works">
+          <div class="search-filter-inner">
+            <h3 class="filter-title">Work</h3>
+            <%= select_tag "work",
+                   options_from_collection_for_select(@works, "title", "title", @search.work_name),
+                   prompt: "Select a work",
+                   class: "works-list",
+                   onchange: "this.form.submit();" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-1-2">
+        <div class="search-filter filter-venues">
+          <div class="search-filter-inner">
+            <h3 class="filter-title">Venue</h3>
+            <%= select_tag "venues[]",
+                  options_for_select(@venues.map { |venue|
+                    [
+                      venue.name,
+                      {
+                        "data-img-src" => "http://dummyimage.com/40x40/000/fff&text=#{venue.name}",
+                        class: "filter-venue-item" }]
+                    }, @search.venue_names),
+                  class: "js-venue-list filter-list",
+                  multiple: "multiple" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="section-container">
+      <div class="col-1-2">
+        <div class="search-filter filter-types">
+          <div class="search-filter-inner">
+            <h3 class="filter-title">File Type</h3>
+            <ul class="js-filters filter-list">
+              <li class="filter-type-item">
+                <a class='file-type active' data-type='images' data-per-page='15'>Images</a>
+              </li>
+              <li class="filter-type-item">
+                <a class='file-type active' data-type='videos'>Vidoes</a>
+              </li>
+              <li class="filter-type-item">
+                <a class='file-type active' data-type='audios'>Audios</a>
+              </li>
+              <li class="filter-type-item">
+                <a class='file-type active' data-type='articles'>Documents</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-1-2">
+        <div class="search-filter filter-year">
+          <div class="search-filter-inner">
+            <h3 class="filter-title">Year Range</h3>
+            <input class="js-year-range"
+                   name="years"
+                   data-min="<%= @search.year_range_limit.begin %>"
+                   data-max="<%= @search.year_range_limit.end %>"
+                   data-from="<%= @search.year_range.begin %>"
+                   data-to="<%= @search.year_range.end %>"
+                   />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

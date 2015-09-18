@@ -507,16 +507,7 @@ Metrics/CyclomaticComplexity:
   Enabled: false
   Max: 6
 Metrics/LineLength:
-  Description: Limit lines to 80 characters.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#80-character-limits
   Enabled: false
-  Max: 80
-  Exclude:
-  - app/controllers/catalog_controller.rb
-  AllowURI: true
-  URISchemes:
-  - http
-  - https
 Metrics/MethodLength:
   Description: Avoid methods longer than 10 lines of code.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#short-methods

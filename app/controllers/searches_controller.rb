@@ -52,4 +52,10 @@ class SearchesController < CatalogController
     images_search = FileSearch.new(params, per_page: 15, resource_type: :image, catalog_query: self)
     @images = images_search.result
   end
+
+  def get_hound_troll
+    hound_troll = FileSearch.new(params, per_page: 15, resource_type: :image, catalog_query: self)
+    @images = images_search.result
+  end
+
 end
